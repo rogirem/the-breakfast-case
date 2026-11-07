@@ -1,7 +1,125 @@
-<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Архив странных улик · Бюро тихих дел</title><meta name="description" content="Интерактивный ретроархив: квадрат, окружность и мем на canvas."><link rel="stylesheet" href="css/style.css"></head><body><div class="page"><div class="topbar"><a class="brand" href="../index.html">БЮРО ТИХИХ ДЕЛ</a><a href="../breakfast/index.html">← Дело о завтраке</a></div><div class="archive-intro"><span class="eyebrow">Дело № 02 / Отдел необъяснимого</span><p>Некоторые улики не укладываются в дело. Для них завели отдельную папку.</p></div>
-<div class="archive-wrap"><header class="archive-header" id="about"><div><span class="tag">Картотека / 1967</span><h1>Архив странных улик</h1><p>Квадрат найден. Круг очерчен. Подозреваемый ведёт себя как мем.</p></div><span class="file-number">ИНВ. № 0067 · ХРАНИТЬ ВЕЧНО</span></header>
-<nav class="archive-nav" aria-label="Навигация по архиву"><a href="#scene">01 / Осмотр</a><a href="#notes">02 / Материалы</a><a href="../breakfast/index.html">03 / Вернуться к делу ↗</a></nav>
-<main class="main" id="scene"><div class="canvas-label"><span>Стол осмотра · нажмите на улику</span><span>Экспонат № <span id="exhibit">01</span> / 03</span></div><canvas id="game" width="900" height="420" tabindex="0" aria-label="Цветной квадрат, контур окружности и мем. Клик или Enter меняет мем.">На canvas изображены квадрат, окружность и мем. Используйте кнопку «Другая улика», чтобы выбрать изображение.</canvas><div class="controls"><div class="buttons"><button class="primary" id="animate" aria-pressed="false" disabled>Оживить улику</button><button id="next" disabled>Другая улика ↗</button></div><label for="speed">Скорость <input id="speed" type="range" min="0.3" max="2" value="1" step="0.1"></label></div><p class="status" role="status" aria-live="polite">Раскладываем материалы…</p></main>
-<section class="notes" id="notes" aria-label="Материалы дела"><article><span class="eyebrow">01 / Объект</span><h2>Квадрат.</h2><p>Терракотовый. Слишком ровный, чтобы оказаться здесь случайно.</p></article><article><span class="eyebrow">02 / След</span><h2>Окружность.</h2><p>Замкнута. Как круг подозреваемых. Внутри пока никого.</p></article><article><span class="eyebrow">03 / Свидетель</span><h2>Без комментариев.</h2><p>Нажмите на изображение или смените улику кнопкой. Показания могут отличаться.</p></article></section>
-<div class="secret-panel" id="secret" hidden><img src="images/six-seven.webp" alt="Кот показывает 6 и 7" width="80" height="80"><p><strong>Совпадение? 6 → 7.</strong><br>Архив проверен. Ответов не прибавилось.</p></div>
-<footer class="archive-footer"><p style="margin:0">Меркурьев Игорь · D4140</p><span>02–03 / Семантическая вёрстка + canvas · ретро</span></footer></div><p class="bottom-note muted" style="font-size:12px;margin-top:20px">Пробел на поле — запуск / пауза. Enter — другая улика. Для секретного протокола нажмите 6, затем 7.</p></div><script src="js/script.js"></script></body></html>
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Архив странных улик · Бюро тихих дел</title>
+    <meta
+      name="description"
+      content="Интерактивный ретроархив: квадрат, окружность и мем на canvas."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="topbar">
+        <a class="brand" href="../index.html">БЮРО ТИХИХ ДЕЛ</a
+        ><a href="../breakfast/index.html">← Дело о завтраке</a>
+      </div>
+      <div class="archive-intro">
+        <span class="eyebrow">Дело № 02 / Отдел необъяснимого</span>
+        <p>
+          Некоторые улики не укладываются в дело. Для них завели отдельную
+          папку.
+        </p>
+      </div>
+      <div class="archive-wrap">
+        <header class="archive-header" id="about">
+          <div>
+            <span class="tag">Картотека / 1967</span>
+            <h1>Архив странных улик</h1>
+            <p>
+              Квадрат найден. Круг очерчен. Подозреваемый ведёт себя как мем.
+            </p>
+          </div>
+          <span class="file-number">ИНВ. № 0067 · ХРАНИТЬ ВЕЧНО</span>
+        </header>
+        <nav class="archive-nav" aria-label="Навигация по архиву">
+          <a href="#scene">01 / Осмотр</a><a href="#notes">02 / Материалы</a
+          ><a href="../breakfast/index.html">03 / Вернуться к делу ↗</a>
+        </nav>
+        <main class="main" id="scene">
+          <div class="canvas-label">
+            <span>Стол осмотра · нажмите на улику</span
+            ><span>Экспонат № <span id="exhibit">01</span> / 03</span>
+          </div>
+          <canvas
+            id="game"
+            width="900"
+            height="420"
+            tabindex="0"
+            aria-label="Цветной квадрат, контур окружности и мем. Клик или Enter меняет мем."
+            >На canvas изображены квадрат, окружность и мем. Используйте кнопку
+            «Другая улика», чтобы выбрать изображение.</canvas
+          >
+          <div class="controls">
+            <div class="buttons">
+              <button
+                class="primary"
+                id="animate"
+                aria-pressed="false"
+                disabled
+              >
+                Оживить улику</button
+              ><button id="next" disabled>Другая улика ↗</button>
+            </div>
+            <label for="speed"
+              >Скорость
+              <input
+                id="speed"
+                type="range"
+                min="0.3"
+                max="2"
+                value="1"
+                step="0.1"
+            /></label>
+          </div>
+          <p class="status" role="status" aria-live="polite">
+            Раскладываем материалы…
+          </p>
+        </main>
+        <section class="notes" id="notes" aria-label="Материалы дела">
+          <article>
+            <span class="eyebrow">01 / Объект</span>
+            <h2>Квадрат.</h2>
+            <p>Терракотовый. Слишком ровный, чтобы оказаться здесь случайно.</p>
+          </article>
+          <article>
+            <span class="eyebrow">02 / След</span>
+            <h2>Окружность.</h2>
+            <p>Замкнута. Как круг подозреваемых. Внутри пока никого.</p>
+          </article>
+          <article>
+            <span class="eyebrow">03 / Свидетель</span>
+            <h2>Без комментариев.</h2>
+            <p>
+              Нажмите на изображение или смените улику кнопкой. Показания могут
+              отличаться.
+            </p>
+          </article>
+        </section>
+        <div class="secret-panel" id="secret" hidden>
+          <img
+            src="images/six-seven.webp"
+            alt="Кот показывает 6 и 7"
+            width="80"
+            height="80"
+          />
+          <p>
+            <strong>Совпадение? 6 → 7.</strong><br />Архив проверен. Ответов не
+            прибавилось.
+          </p>
+        </div>
+        <footer class="archive-footer">
+          <p style="margin: 0">Меркурьев Игорь · D4140</p>
+          <span>02–03 / Семантическая вёрстка + canvas · ретро</span>
+        </footer>
+      </div>
+      <p class="bottom-note muted" style="font-size: 12px; margin-top: 20px">
+        Пробел на поле — запуск / пауза. Enter — другая улика. Для секретного
+        протокола нажмите 6, затем 7.
+      </p>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
